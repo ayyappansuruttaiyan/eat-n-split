@@ -22,7 +22,49 @@ const initialFriends = [
 ];
 
 function App() {
-  return <div className="app"></div>;
+  return (
+    <div className="app">
+      <div className="sidebar">
+        <FriendsList />
+      </div>
+    </div>
+  );
 }
 
 export default App;
+
+function FriendsList() {
+  const friends = initialFriends;
+  return (
+    <ul>
+      {friends.map((friend) => (
+        <Friend friend={friend} key={friend.id} />
+      ))}
+    </ul>
+  );
+}
+
+function Friend({ friend }) {
+  return (
+    <li>
+      <img src={friend.image} />
+      <h3>{friend.name}</h3>
+      {/* this condition for if the balance is negative */}
+      {friend.balance < 0 && (
+        <p className="red">
+          You owe {friend.name} &#8377; {Math.abs(friend.balance)}
+        </p>
+      )}
+
+      {/* this condition for if the balance is not negative */}
+      {friend.balance > 0 && (
+        <p className="green">
+          {friend.name} owes you &#8377; {Math.abs(friend.balance)}
+        </p>
+      )}
+
+      {/* this condition for if the balance = 0 */}
+      {friend.balance === 0 && <p>You and {friend.name} are even.</p>}
+    </li>
+  );
+}
