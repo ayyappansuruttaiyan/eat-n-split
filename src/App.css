@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   color: #495057;
   display: flex;
   align-items: center;
@@ -26,6 +26,8 @@ body {
 }
 
 .app {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   min-height: 66vh;
   display: grid;
   grid-template-columns: 44rem 44rem;
